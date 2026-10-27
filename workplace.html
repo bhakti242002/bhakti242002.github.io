@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Bhakti Pasnani | Workplace Systems Engineer fit report</title>
+<meta name="description" content="A BI-style report on why Bhakti Pasnani fits the Workplace Systems Engineer role: KPIs, posting match, a live data-quality demo, projects and experience.">
+<meta property="og:title" content="Bhakti Pasnani | Workplace Systems Engineer fit report">
+<meta property="og:description" content="KPIs, a posting match, a live data-quality demo and the projects behind them.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230F1733'/><rect x='22' y='52' width='14' height='26' rx='4' fill='%232DD4BF'/><rect x='43' y='36' width='14' height='42' rx='4' fill='%237C9CFF'/><rect x='64' y='22' width='14' height='56' rx='4' fill='%23F5B83D'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --cond:'IBM Plex Sans Condensed','IBM Plex Sans','Arial Narrow',Arial,sans-serif;
+  --canvas:#EEF1F5; --card:#FFFFFF; --line:#E1E5EB; --line-2:#CDD3DC; --track:#F0F2F6;
+  --text:#1B2230; --text-2:#4D5667; --muted:#7B8494;
+  --blue:#2F6FDE; --blue-soft:#E7EEFC; --teal:#159E8F; --teal-soft:#E3F4F1;
+  --amber:#E39A22; --amber-soft:#FCF1DE; --red:#D64545; --red-soft:#FBE7E7; --slate:#8A94A6;
+  --top:56px;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--top) + 64px);-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--canvas);color:var(--text);font:400 15px/1.55 var(--font);-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{margin:0;line-height:1.2;}
+p{margin:0;}
+ul,ol{margin:0;padding:0;list-style:none;}
+a{color:inherit;}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:6px;}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.skip{position:absolute;left:12px;top:-80px;z-index:90;background:var(--text);color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600;}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px));}
+.num{font-family:var(--cond);font-variant-numeric:tabular-nums;}
+
+/* ---------- top bar ---------- */
+.topbar{position:fixed;inset:0 0 auto 0;z-index:40;height:calc(var(--top) + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 20px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--card);border-bottom:1px solid var(--line);}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;}
+.brand svg{width:28px;height:28px;flex:none;}
+.brand .name{font-weight:600;font-size:16px;white-space:nowrap;}
+.brand .report{color:var(--muted);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-left:12px;border-left:1px solid var(--line-2);}
+.top-actions{display:flex;align-items:center;gap:10px;flex:none;}
+.asof{font-size:13px;color:var(--muted);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:36px;padding:0 16px;border-radius:8px;font:600 14px/1 var(--font);text-decoration:none;cursor:pointer;transition:background-color .15s,border-color .15s;}
+.btn-primary{background:var(--blue);color:#fff;}
+.btn-primary:hover{background:#2560C7;}
+.btn-ghost{background:var(--card);color:var(--text);border:1px solid var(--line-2);}
+.btn-ghost:hover{background:#F6F7F9;border-color:#B9C0CA;}
+@media (max-width:720px){.brand .report,.asof{display:none;}.topbar{padding-left:14px;padding-right:14px;}}
+
+/* ---------- shell ---------- */
+.shell{display:grid;grid-template-columns:216px minmax(0,1fr);padding-top:calc(var(--top) + env(safe-area-inset-top,0px));min-height:100vh;}
+.rail{position:sticky;top:calc(var(--top) + env(safe-area-inset-top,0px));height:calc(100vh - var(--top));align-self:start;padding:18px 12px;border-right:1px solid var(--line);background:#F7F8FA;display:flex;flex-direction:column;gap:2px;}
+.rail-title{font-size:12px;font-weight:600;color:var(--muted);padding:0 12px 8px;}
+.rail a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;text-decoration:none;font-weight:500;font-size:14.5px;color:var(--text-2);transition:background-color .15s,color .15s;}
+.rail a svg{width:17px;height:17px;flex:none;color:var(--muted);}
+.rail a:hover{background:#ECEFF3;color:var(--text);}
+.rail a.on{background:var(--blue-soft);color:var(--blue);}
+.rail a.on svg{color:var(--blue);}
+main{min-width:0;padding:0 clamp(16px,2.6vw,32px) 48px;}
+@media (max-width:1000px){
+  .shell{grid-template-columns:1fr;}
+  .rail{position:sticky;z-index:30;height:auto;flex-direction:row;overflow-x:auto;padding:8px 10px;border-right:0;border-bottom:1px solid var(--line);gap:4px;scrollbar-width:none;}
+  .rail::-webkit-scrollbar{display:none;}
+  .rail-title{display:none;}
+  .rail a{white-space:nowrap;padding:8px 12px;}
+  .rail a svg{display:none;}
+}
+
+/* ---------- slicer ---------- */
+.slicer{position:sticky;top:calc(var(--top) + env(safe-area-inset-top,0px));z-index:20;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 0 12px;background:rgba(238,241,245,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
+.slicer-label{font-size:13px;font-weight:600;color:var(--text-2);}
+.chips{display:flex;gap:6px;flex-wrap:wrap;}
+.chips button{padding:6px 12px;border-radius:999px;border:1px solid var(--line-2);background:var(--card);font-size:13.5px;font-weight:500;color:var(--text-2);transition:background-color .15s,color .15s,border-color .15s;}
+.chips button:hover{border-color:#B9C0CA;color:var(--text);}
+.chips button[aria-pressed="true"]{background:var(--text);border-color:var(--text);color:#fff;}
+.slicer-note{font-size:13px;color:var(--muted);margin-left:auto;}
+@media (max-width:1000px){.slicer{position:static;}.chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;}.chips button{flex:none;}.slicer-note{margin-left:0;width:100%;}}
+
+/* ---------- report pages ---------- */
+.page{padding-top:22px;}
+.page + .page{margin-top:22px;padding-top:28px;border-top:1px solid var(--line-2);}
+.page-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 24px;flex-wrap:wrap;margin-bottom:16px;}
+.page-head h2{font-size:22px;font-weight:600;}
+.page-head p{color:var(--text-2);max-width:70ch;margin-top:4px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;transition:opacity .25s ease,filter .25s ease;}
+.card-title{font-size:13.5px;font-weight:600;color:var(--text-2);margin-bottom:12px;}
+.foot-note{margin-top:12px;font-size:12.5px;color:var(--muted);}
+.dim{opacity:.3;filter:saturate(.2);}
+
+/* overview */
+.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 32px;flex-wrap:wrap;margin:6px 0 18px;}
+.hero h1{font-family:var(--cond);font-weight:600;font-size:clamp(30px,3.4vw,40px);}
+.hero p{color:var(--text-2);margin-top:4px;}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;}
+.kpi b{display:block;font-family:var(--cond);font-weight:600;font-size:34px;line-height:1.05;font-variant-numeric:tabular-nums;}
+.kpi span{display:block;margin-top:6px;font-size:13.5px;color:var(--text-2);}
+.kpi small{display:block;margin-top:8px;font-size:12px;color:var(--muted);}
+.kpi .src{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px;vertical-align:1px;}
+.over-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);gap:12px;margin-top:12px;}
+.why{grid-row:span 2;}
+.why h2{font-size:20px;font-weight:600;margin-bottom:6px;}
+.why > p{color:var(--text-2);font-size:14px;}
+.why li{padding:14px 0;border-top:1px solid var(--line);transition:opacity .25s ease;}
+.why li:first-of-type{margin-top:12px;}
+.why li strong{display:block;font-weight:600;font-size:15.5px;}
+.why li span{display:block;color:var(--text-2);font-size:14px;margin-top:2px;}
+.why li a{display:inline-block;margin-top:6px;font-size:13.5px;font-weight:600;color:var(--blue);text-decoration:none;}
+.why li a:hover{text-decoration:underline;}
+.why .gap-note{margin-top:4px;padding:12px 14px;border-radius:8px;background:var(--amber-soft);font-size:13.5px;color:#7A5410;}
+.hbar{display:grid;grid-template-columns:96px minmax(0,1fr) 64px;gap:10px;align-items:center;margin:12px 0;font-size:13.5px;}
+.hbar .lbl{color:var(--text-2);}
+.hbar .val{text-align:right;font-family:var(--cond);font-weight:600;font-variant-numeric:tabular-nums;}
+.track{height:16px;background:var(--track);border-radius:4px;overflow:hidden;}
+.fill{height:100%;border-radius:4px;background:var(--blue);min-width:3px;}
+.stack{display:flex;height:28px;border-radius:5px;overflow:hidden;margin:6px 0 14px;}
+.stack i{display:block;height:100%;}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;font-size:13.5px;}
+.legend div{display:flex;align-items:center;gap:8px;color:var(--text-2);}
+.legend b{margin-left:auto;font-family:var(--cond);font-weight:600;color:var(--text);font-variant-numeric:tabular-nums;}
+.sw{width:10px;height:10px;border-radius:2px;flex:none;}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr));}.over-grid{grid-template-columns:1fr 1fr;}.why{grid-row:auto;grid-column:1/-1;}}
+@media (max-width:640px){.over-grid{grid-template-columns:1fr;}.kpi b{font-size:30px;}}
+
+/* tables */
+.table-wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+th{text-align:left;font-size:12.5px;font-weight:600;color:var(--muted);padding:11px 14px;border-bottom:1px solid var(--line-2);background:#F9FAFB;white-space:nowrap;}
+td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+tr:last-child td{border-bottom:0;}
+tbody tr{transition:opacity .25s ease,filter .25s ease;}
+.match td:first-child{width:30%;font-style:italic;color:var(--text);}
+.match ul li{position:relative;padding-left:14px;color:var(--text-2);}
+.match ul li + li{margin-top:6px;}
+.match ul li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--blue);}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600;background:var(--blue-soft);color:var(--blue);margin:0 4px 4px 0;white-space:nowrap;}
+.chip.teal{background:var(--teal-soft);color:#0E7A6E;}
+.chip.amber{background:var(--amber-soft);color:#8A5D0F;}
+.chip.red{background:var(--red-soft);color:#A82F2F;}
+.chip.gray{background:#EEF0F3;color:var(--text-2);}
+.see{font-weight:600;color:var(--blue);text-decoration:none;white-space:nowrap;}
+.see:hover{text-decoration:underline;}
+.match tr.gap td{background:#FFFBF2;}
+.match tr.gap td:first-child{font-style:normal;font-weight:600;}
+
+/* data quality */
+.dq{display:grid;grid-template-columns:minmax(280px,360px) minmax(0,1fr);gap:12px;align-items:start;}
+.rules{display:grid;gap:10px;}
+.switch{display:flex;align-items:center;gap:12px;cursor:pointer;font-weight:500;font-size:14.5px;}
+.switch input{position:absolute;opacity:0;width:1px;height:1px;}
+.switch .sw-track{position:relative;flex:none;width:40px;height:22px;border-radius:999px;background:#CBD1DA;transition:background-color .2s;}
+.switch .sw-track::after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2);transition:transform .2s;}
+.switch input:checked + .sw-track{background:var(--teal);}
+.switch input:checked + .sw-track::after{transform:translateX(18px);}
+.switch input:focus-visible + .sw-track{outline:3px solid var(--blue);outline-offset:2px;}
+.switch small{display:block;font-weight:400;font-size:12.5px;color:var(--muted);}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+.mini div{background:#F9FAFB;border:1px solid var(--line);border-radius:8px;padding:10px 12px;}
+.mini dt{font-size:12.5px;color:var(--muted);}
+.mini dd{margin:2px 0 0;font-family:var(--cond);font-weight:600;font-size:24px;font-variant-numeric:tabular-nums;}
+.mini .changed dd{color:var(--teal);}
+.wo td,.wo th{white-space:nowrap;}
+.wo td.bad{background:var(--red-soft);color:#A82F2F;font-weight:600;}
+.wo tr.held td{color:var(--muted);}
+.wo tr.held td.bad{color:#A82F2F;}
+.status-in{color:#0E7A6E;font-weight:600;font-size:13px;}
+.dq-right{display:grid;gap:12px;min-width:0;}
+.dq-charts{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.hbar.site{grid-template-columns:96px minmax(0,1fr) 28px;margin:9px 0;}
+.hbar.site .lbl.warn{color:var(--red);font-weight:600;}
+@media (max-width:1100px){.dq{grid-template-columns:1fr;}}
+@media (max-width:640px){.dq-charts{grid-template-columns:1fr;}}
+
+/* projects */
+.proj td:first-child{width:28%;}
+.proj-btn{text-align:left;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px;}
+.proj-btn svg{width:14px;height:14px;color:var(--muted);flex:none;transition:transform .2s;}
+.proj tr.sel td{background:#F4F8FF;}
+.proj tr.sel .proj-btn{color:var(--blue);}
+.proj tr.sel .proj-btn svg{transform:rotate(90deg);color:var(--blue);}
+.proj .res{font-family:var(--cond);font-weight:600;font-size:16px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.proj .res-sub{display:block;font-family:var(--font);font-weight:400;font-size:12.5px;color:var(--muted);white-space:normal;}
+.detail{margin-top:12px;}
+.detail-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+.detail-head h3{font-size:18px;font-weight:600;}
+.detail-head p{color:var(--text-2);font-size:14px;margin-top:2px;max-width:72ch;}
+.detail-links{display:flex;gap:8px;flex-wrap:wrap;}
+.detail dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px;margin:0;}
+.detail dt{font-size:12.5px;font-weight:600;color:var(--muted);}
+.detail dd{margin:3px 0 0;color:var(--text-2);font-size:14.5px;}
+@media (max-width:760px){.detail dl{grid-template-columns:1fr;}}
+
+/* experience */
+.gantt{position:relative;}
+.g-axis{position:relative;height:20px;margin-left:220px;font-size:12px;color:var(--muted);}
+.g-axis span{position:absolute;transform:translateX(-50%);}
+.g-row{display:grid;grid-template-columns:220px minmax(0,1fr);align-items:center;min-height:36px;font-size:13.5px;transition:opacity .25s ease;}
+.g-row .g-lbl{padding-right:12px;color:var(--text-2);}
+.g-row .g-lbl b{display:block;color:var(--text);font-weight:600;}
+.g-track{position:relative;height:20px;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(100%/7 - 1px),var(--line) calc(100%/7 - 1px),var(--line) calc(100%/7));border-radius:3px;}
+.g-bar{position:absolute;top:2px;height:16px;border-radius:4px;}
+.g-legend{display:flex;gap:16px;margin-top:12px;font-size:13px;color:var(--text-2);}
+.g-legend span{display:flex;align-items:center;gap:6px;}
+.roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px;}
+.role h3{font-size:16px;font-weight:600;}
+.role .org{color:var(--text-2);font-size:13.5px;margin-top:2px;}
+.role .when{color:var(--muted);font-size:12.5px;margin-top:2px;}
+.role ul{margin-top:12px;display:grid;gap:10px;}
+.role li{position:relative;padding-left:14px;font-size:14px;color:var(--text-2);transition:opacity .25s ease;}
+.role li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--slate);}
+@media (max-width:1100px){.roles{grid-template-columns:1fr;}}
+@media (max-width:640px){.g-axis{margin-left:120px;}.g-row{grid-template-columns:120px minmax(0,1fr);}.g-row .g-lbl b{font-size:12.5px;}.g-row .g-lbl small{display:none;}}
+
+/* toolkit */
+.tk{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:12px;align-items:start;}
+.usage td,.usage th{text-align:center;}
+.usage td:first-child,.usage th:first-child{text-align:left;font-weight:500;}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--blue);vertical-align:middle;}
+.dot.none{background:transparent;border:1.5px solid var(--line-2);}
+.also{margin-top:12px;font-size:13.5px;color:var(--text-2);}
+.edu li{padding:12px 0;border-top:1px solid var(--line);}
+.edu li:first-child{border-top:0;padding-top:0;}
+.edu strong{display:block;font-weight:600;}
+.edu span,.edu small{display:block;color:var(--text-2);font-size:14px;}
+.edu small{color:var(--muted);font-size:13px;}
+@media (max-width:1000px){.tk{grid-template-columns:1fr;}}
+
+/* contact */
+.contact{display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;}
+.contact h2{font-size:22px;font-weight:600;}
+.contact p{color:var(--text-2);margin-top:4px;}
+.contact-row{display:flex;gap:8px;flex-wrap:wrap;}
+.legal{margin-top:16px;font-size:12.5px;color:var(--muted);}
+.legal a{color:var(--text-2);}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*,*::before,*::after{transition-duration:.001ms !important;}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="brand">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="24" fill="#0F1733"/><rect x="22" y="52" width="14" height="26" rx="4" fill="#2DD4BF"/><rect x="43" y="36" width="14" height="42" rx="4" fill="#7C9CFF"/><rect x="64" y="22" width="14" height="56" rx="4" fill="#F5B83D"/></svg>
+    <span class="name">Bhakti Pasnani</span>
+    <span class="report">Workplace Systems Engineer fit report</span>
+  </div>
+  <div class="top-actions">
+    <span class="asof">Data as of October 2026</span>
+    <a class="btn btn-primary" href="mailto:bhaktipasnani02@gmail.com?subject=Workplace%20Systems%20Engineer%20role">Email</a>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="rail" id="rail" aria-label="Report pages">
+    <p class="rail-title">Report pages</p>
+    <a href="#overview" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Overview</a>
+    <a href="#match"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>Posting match</a>
+    <a href="#quality"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Data quality</a>
+    <a href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Projects</a>
+    <a href="#experience"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M8 12h10M6 18h7"/></svg>Experience</a>
+    <a href="#toolkit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Toolkit</a>
+    <a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Contact</a>
+  </nav>
+
+  <main id="main">
+    <div class="slicer" role="group" aria-labelledby="slicerLabel">
+      <span class="slicer-label" id="slicerLabel">Filter by posting requirement</span>
+      <div class="chips" id="chips">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="bi" aria-pressed="false">BI and metrics</button>
+        <button type="button" data-f="req" aria-pressed="false">Requirements</button>
+        <button type="button" data-f="lead" aria-pressed="false">Leadership reports</button>
+        <button type="button" data-f="auto" aria-pressed="false">Automation</button>
+        <button type="button" data-f="api" aria-pressed="false">SQL and APIs</button>
+        <button type="button" data-f="prog" aria-pressed="false">Programs</button>
+      </div>
+      <span class="slicer-note" id="slicerNote" aria-live="polite">Showing all evidence</span>
+    </div>
+
+    <!-- ================= OVERVIEW ================= -->
+    <section class="page" id="overview" aria-labelledby="ovTitle">
+      <div class="hero">
+        <div>
+          <h1 id="ovTitle">Bhakti Pasnani</h1>
+          <p>Fit report for the Workplace Systems Engineer role at Tesla. MS in Data Science at Northeastern, graduating December 2026.</p>
+        </div>
+      </div>
+
+      <div class="kpis">
+        <div class="card kpi" data-req="bi lead"><b>20+</b><span>DAX measures across 5 Power BI dashboards</span><small><i class="src" style="background:var(--blue)"></i>Hupp Technologies</small></div>
+        <div class="card kpi" data-req="bi req lead"><b>12</b><span>cross-functional stakeholders using those dashboards</span><small><i class="src" style="background:var(--blue)"></i>Hupp Technologies</small></div>
+        <div class="card kpi" data-req="req prog"><b>60%</b><span>fewer repeat requests after fixing root causes</span><small><i class="src" style="background:var(--blue)"></i>Hupp Technologies</small></div>
+        <div class="card kpi" data-req="auto bi"><b>15%</b><span>less manual reporting effort from automated data checks</span><small><i class="src" style="background:var(--teal)"></i>EN-NOBLE</small></div>
+        <div class="card kpi" data-req="auto api"><b>240x</b><span>faster processing on 10,000+ row files</span><small><i class="src" style="background:var(--amber)"></i>Insight Bridge</small></div>
+        <div class="card kpi" data-req="lead bi"><b>378</b><span>likely churners flagged by my model</span><small><i class="src" style="background:var(--amber)"></i>Churn project</small></div>
+        <div class="card kpi" data-req="api"><b>120</b><span>AI SQL rewrites checked under EXPLAIN ANALYZE</span><small><i class="src" style="background:var(--amber)"></i>AI SQL Auditor</small></div>
+        <div class="card kpi" data-req="prog"><b>30%</b><span>fewer escalations to the professor</span><small><i class="src" style="background:var(--slate)"></i>Head TA, Northeastern</small></div>
+      </div>
+
+      <div class="over-grid">
+        <div class="card why">
+          <h2>Why hire me</h2>
+          <p>Three things your Workplace team gets from day one, each backed by work you can check.</p>
+          <ul>
+            <li data-req="bi auto"><strong>Dashboards built on clean data</strong><span>I check data before it reaches a dashboard: automated checks for missing values, duplicates and bad formats at EN-NOBLE, and standardized KPIs across five Power BI dashboards at Hupp.</span><a href="#quality">See the data-quality demo</a></li>
+            <li data-req="auto api"><strong>Systems, not one-off reports</strong><span>I automate what teams repeat. Insight Bridge turns any spreadsheet into a dashboard with no setup, and my Python workflows at Hupp ran CI/CD checks to catch errors before reporting.</span><a href="#projects">See the projects</a></li>
+            <li data-req="lead bi req"><strong>Reports leadership can act on</strong><span>I write for the person making the decision: prediction dashboards from my churn model, 20+ self-serve guides at EN-NOBLE, and 4 technical sessions for 50+ students as Head TA.</span><a href="#experience">See the experience</a></li>
+          </ul>
+          <p class="gap-note"><b>Not yet:</b> I haven’t supported facilities operations. It’s the part of this role I’m most excited to learn.</p>
+        </div>
+
+        <div class="card" data-req="auto">
+          <p class="card-title">Insight Bridge processing time, 10,000+ row file</p>
+          <div class="hbar"><span class="lbl">Before fix</span><div class="track"><div class="fill" style="width:100%;background:var(--slate)"></div></div><span class="val">36 s</span></div>
+          <div class="hbar"><span class="lbl">After fix</span><div class="track"><div class="fill" style="width:0.42%;background:var(--teal)"></div></div><span class="val">0.15 s</span></div>
+          <p class="foot-note">240x faster after fixing one bottleneck.</p>
+        </div>
+
+        <div class="card" data-req="api">
+          <p class="card-title">AI SQL rewrite outcomes (n = 120)</p>
+          <div class="stack" role="img" aria-label="38% helped, 34% no change, 20% slower, 8% failed to run"><i style="width:38%;background:var(--teal)"></i><i style="width:34%;background:#C3CAD5"></i><i style="width:20%;background:var(--amber)"></i><i style="width:8%;background:var(--red)"></i></div>
+          <div class="legend">
+            <div><i class="sw" style="background:var(--teal)"></i>Helped<b>38%</b></div>
+            <div><i class="sw" style="background:#C3CAD5"></i>No change<b>34%</b></div>
+            <div><i class="sw" style="background:var(--amber)"></i>Slower<b>20%</b></div>
+            <div><i class="sw" style="background:var(--red)"></i>Failed to run<b>8%</b></div>
+          </div>
+          <p class="foot-note">Every rewrite was run under EXPLAIN ANALYZE before it counted.</p>
+        </div>
+
+        <div class="card" data-req="lead">
+          <p class="card-title">Revenue declines caught on held-out years (recall)</p>
+          <div class="hbar"><span class="lbl">My model</span><div class="track"><div class="fill" style="width:50%"></div></div><span class="val">50%</span></div>
+          <div class="hbar"><span class="lbl">Naive baseline</span><div class="track"><div class="fill" style="width:0;min-width:0"></div></div><span class="val">0%</span></div>
+          <p class="foot-note">The naive model looks 78% accurate but catches no declines. Mine scores 0.62 ROC-AUC on 2021 onward.</p>
+        </div>
+
+        <div class="card" data-req="req prog">
+          <p class="card-title">Repeat requests at Hupp, indexed to 100</p>
+          <div class="hbar"><span class="lbl">Before</span><div class="track"><div class="fill" style="width:100%;background:var(--slate)"></div></div><span class="val">100</span></div>
+          <div class="hbar"><span class="lbl">After</span><div class="track"><div class="fill" style="width:40%;background:var(--teal)"></div></div><span class="val">40</span></div>
+          <p class="foot-note">I traced 15+ recurring requests to dashboard gaps and fixed the root causes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= POSTING MATCH ================= -->
+    <section class="page" id="match" aria-labelledby="matchTitle">
+      <div class="page-head">
+        <div>
+          <h2 id="matchTitle">Posting match</h2>
+          <p>Each line from the job description, with the work that covers it.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="match">
+          <thead><tr><th scope="col">The posting asks for</th><th scope="col">Evidence</th><th scope="col">Where</th><th scope="col"><span class="sr-only">Link</span></th></tr></thead>
+          <tbody>
+            <tr data-req="bi"><td>“Utilize business intelligence tools to identify, create, analyze, and maintain metrics to support business needs”</td>
+              <td><ul><li>Standardized KPI calculations with 20+ DAX measures across 5 Power BI dashboards for 12 cross-functional stakeholders.</li><li>Built Power BI churn and prediction dashboards on 7,000+ customer records cleaned in SQL Server.</li></ul></td>
+              <td><span class="chip">Hupp</span><span class="chip amber">Churn project</span></td><td><a class="see" href="#projects" data-open="p-churn">See project</a></td></tr>
+            <tr data-req="req"><td>“Partner with Operations teams to scope projects, gather requirements, and create Business Intelligence solutions”</td>
+              <td><ul><li>Turned 8+ stakeholder discussions into 20+ workflow specifications and self-serve guides.</li><li>Traced 15+ recurring requests to dashboard gaps and fixed the root causes, cutting repeat requests by 60%.</li></ul></td>
+              <td><span class="chip teal">EN-NOBLE</span><span class="chip">Hupp</span></td><td><a class="see" href="#experience">See roles</a></td></tr>
+            <tr data-req="lead"><td>“Prepare reports for leadership to effectively communicate trends, patterns, and predictions”</td>
+              <td><ul><li>My churn model flagged 378 likely churners and broke them down by contract, tenure and payment method.</li><li>My revenue-risk model trains on 2009 to 2020 and is tested only on 2021 onward: 0.62 ROC-AUC and 50% recall.</li></ul></td>
+              <td><span class="chip amber">Churn project</span><span class="chip amber">Revenue Risk</span></td><td><a class="see" href="#projects" data-open="p-risk">See project</a></td></tr>
+            <tr data-req="auto"><td>“Work with the Workplace analytics and automation team to create low-code applications”</td>
+              <td><ul><li>Built Insight Bridge, which turns any spreadsheet into a working dashboard with no setup, then made it 240x faster.</li><li>Automated SQL and Python data-quality checks, cutting manual reporting effort by 15%.</li></ul></td>
+              <td><span class="chip amber">Insight Bridge</span><span class="chip teal">EN-NOBLE</span></td><td><a class="see" href="#projects" data-open="p-bridge">See project</a></td></tr>
+            <tr data-req="api"><td>“Background in SQL preferred. Experience with RESTful APIs preferred”</td>
+              <td><ul><li>Tested 120 AI-suggested SQL rewrites under EXPLAIN ANALYZE: 38% helped, 34% changed nothing, 20% ran slower and 8% failed.</li><li>My revenue-risk tool pulls company filings from the SEC EDGAR API on every request, and Insight Bridge runs on a Flask back end with a React front end.</li></ul></td>
+              <td><span class="chip amber">AI SQL Auditor</span><span class="chip amber">Revenue Risk</span></td><td><a class="see" href="#projects" data-open="p-sql">See project</a></td></tr>
+            <tr data-req="prog"><td>“Support varied programs such as issue tracking, project management, budget management, and Operations tools”</td>
+              <td><ul><li>As Head TA, coordinated 5 TAs for a 100+ student course, owned lab scheduling, and cut escalations to the professor by 30%.</li><li>Scoped, designed and launched a customer-facing MVP from requirements to release.</li></ul></td>
+              <td><span class="chip gray">Head TA</span><span class="chip teal">EN-NOBLE</span></td><td><a class="see" href="#experience">See roles</a></td></tr>
+            <tr class="gap"><td>Not yet covered</td>
+              <td><ul><li>Facilities operations: I haven’t worked in a facilities or workplace team yet, and it’s the part of this role I’m most excited to learn.</li></ul></td>
+              <td><span class="chip gray">Gap</span></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= DATA QUALITY ================= -->
+    <section class="page" id="quality" aria-labelledby="dqTitle">
+      <div class="page-head">
+        <div>
+          <h2 id="dqTitle">Every record checked before it hits a report</h2>
+          <p>Sample work orders with the kinds of errors I automated checks for at EN-NOBLE. Turn the rules on and watch what reaches the dashboard.</p>
+        </div>
+      </div>
+      <div class="dq" data-req="bi auto">
+        <div class="card">
+          <p class="card-title">Validation rules</p>
+          <div class="rules">
+            <label class="switch"><input type="checkbox" id="rule-missing" data-rule="missing"><span class="sw-track"></span><span>Missing values<small>Empty owner or close date</small></span></label>
+            <label class="switch"><input type="checkbox" id="rule-duplicate" data-rule="duplicate"><span class="sw-track"></span><span>Duplicate records<small>The same ticket logged twice</small></span></label>
+            <label class="switch"><input type="checkbox" id="rule-format" data-rule="format"><span class="sw-track"></span><span>Inconsistent formats<small>Site names and dates that don’t match the standard</small></span></label>
+          </div>
+          <dl class="mini" aria-live="polite">
+            <div id="m-total"><dt>Tickets in report</dt><dd>–</dd></div>
+            <div id="m-open"><dt>Showing as open</dt><dd>–</dd></div>
+            <div id="m-days"><dt>Avg days to close</dt><dd>–</dd></div>
+            <div id="m-held"><dt>Held for review</dt><dd>–</dd></div>
+          </dl>
+          <p class="foot-note">Held records go to a review queue instead of quietly skewing the report.</p>
+        </div>
+        <div class="dq-right">
+          <div class="dq-charts">
+            <div class="card"><p class="card-title">Tickets by site, as reported</p><div id="siteChart"></div></div>
+            <div class="card"><p class="card-title">Issues in this sample</p><div id="issueChart"></div></div>
+          </div>
+          <div class="table-wrap">
+            <table class="wo">
+              <caption class="sr-only">Sample work orders with validation results</caption>
+              <thead><tr><th scope="col">Ticket</th><th scope="col">Site</th><th scope="col">Category</th><th scope="col">Opened</th><th scope="col">Closed</th><th scope="col">Owner</th><th scope="col">Status</th></tr></thead>
+              <tbody id="woBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section class="page" id="projects" aria-labelledby="projTitle">
+      <div class="page-head">
+        <div>
+          <h2 id="projTitle">Projects</h2>
+          <p>Ordered by how closely each one matches this role. Select a project to drill through to the details.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="proj">
+          <thead><tr><th scope="col">Project</th><th scope="col">Focus</th><th scope="col">Built with</th><th scope="col">Key result</th></tr></thead>
+          <tbody id="projBody">
+            <tr data-id="p-bridge" data-req="auto api bi"><td><button class="proj-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Insight Bridge</button></td><td><span class="chip">Automated reporting</span></td><td>Python, Flask, React, Claude API</td><td><span class="res">240x faster<span class="res-sub">36 s to 150 ms on 10,000+ rows</span></span></td></tr>
+            <tr data-id="p-churn" data-req="bi lead"><td><button class="proj-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Customer churn prediction</button></td><td><span class="chip">Power BI and SQL</span></td><td>SQL Server, Power BI, Python, Random Forest</td><td><span class="res">378 flagged<span class="res-sub">likely future churners</span></span></td></tr>
+            <tr data-id="p-risk" data-req="lead api"><td><button class="proj-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Live Revenue Risk Check</button></td><td><span class="chip">Predictions and APIs</span></td><td>Python, scikit-learn, SEC EDGAR API, Vercel</td><td><span class="res">0.62 ROC-AUC<span class="res-sub">50% recall on held-out years</span></span></td></tr>
+            <tr data-id="p-sql" data-req="api"><td><button class="proj-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>AI SQL Auditor</button></td><td><span class="chip">SQL depth</span></td><td>Python, PostgreSQL, EXPLAIN ANALYZE, Claude API</td><td><span class="res">38% helped<span class="res-sub">20% of AI rewrites made queries slower</span></span></td></tr>
+            <tr data-id="p-gemini" data-req="bi req"><td><button class="proj-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Gemini in Sheets confidence layer</button></td><td><span class="chip">Metrics design</span></td><td>PRD, wireframes, market sizing</td><td><span class="res">3.3M seats<span class="res-sub">year-one market, sized with TAM, SAM and SOM</span></span></td></tr>
+            <tr data-id="p-funnel" data-req="lead"><td><button class="proj-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Google Storage funnel</button></td><td><span class="chip">Experiment design</span></td><td>Funnel analysis, cohorts, SWOT</td><td><span class="res">2 goals<span class="res-sub">in tension, untangled with a cohort experiment</span></span></td></tr>
+            <tr data-id="p-strava" data-req="req"><td><button class="proj-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Strava leaderboards</button></td><td><span class="chip">Test plan</span></td><td>Social comparison theory, redesign</td><td><span class="res">Peer tiers<span class="res-sub">compare runners with people like them</span></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card detail" id="detail" aria-live="polite"></div>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section class="page" id="experience" aria-labelledby="expTitle">
+      <div class="page-head">
+        <div>
+          <h2 id="expTitle">Experience</h2>
+          <p>Work and study since 2020.</p>
+        </div>
+      </div>
+      <div class="card gantt" role="img" aria-label="Timeline: BE at Gujarat Technological University from January 2020 to June 2024; Junior Data Analyst at Hupp Technologies from March to December 2023; MS at Northeastern from September 2024 to December 2026; Head TA from January to August 2025; Business Intelligence Intern at EN-NOBLE from January to April 2026.">
+        <div class="g-axis" aria-hidden="true"><span style="left:0%">2020</span><span style="left:14.286%">2021</span><span style="left:28.571%">2022</span><span style="left:42.857%">2023</span><span style="left:57.143%">2024</span><span style="left:71.429%">2025</span><span style="left:85.714%">2026</span><span style="left:100%">2027</span></div>
+        <div class="g-row"><span class="g-lbl"><b>BE, Information Technology</b><small>Gujarat Technological University</small></span><div class="g-track"><i class="g-bar" style="left:0%;width:64.286%;background:#C3CAD5"></i></div></div>
+        <div class="g-row" data-req="bi auto req"><span class="g-lbl"><b>Junior Data Analyst</b><small>Hupp Technologies</small></span><div class="g-track"><i class="g-bar" style="left:45.238%;width:11.905%;background:var(--blue)"></i></div></div>
+        <div class="g-row"><span class="g-lbl"><b>MS, Data Science</b><small>Northeastern University</small></span><div class="g-track"><i class="g-bar" style="left:66.667%;width:33.333%;background:#C3CAD5"></i></div></div>
+        <div class="g-row" data-req="prog lead"><span class="g-lbl"><b>Head Teaching Assistant</b><small>Khoury College, Northeastern</small></span><div class="g-track"><i class="g-bar" style="left:71.429%;width:9.524%;background:var(--teal)"></i></div></div>
+        <div class="g-row" data-req="auto req bi"><span class="g-lbl"><b>Business Intelligence Intern</b><small>EN-NOBLE</small></span><div class="g-track"><i class="g-bar" style="left:85.714%;width:4.762%;background:var(--blue)"></i></div></div>
+        <div class="g-legend" aria-hidden="true"><span><i class="sw" style="background:var(--blue)"></i>Work</span><span><i class="sw" style="background:var(--teal)"></i>Teaching</span><span><i class="sw" style="background:#C3CAD5"></i>Education</span></div>
+      </div>
+      <div class="roles">
+        <article class="card role">
+          <h3>Business Intelligence Intern</h3>
+          <p class="org">EN-NOBLE, Portland, ME</p>
+          <p class="when">Jan 2026 to Apr 2026</p>
+          <ul>
+            <li data-req="auto bi">Automated SQL and Python QA checks that flag missing values, duplicate records and inconsistent formats in reporting data, cutting manual reporting effort by 15%.</li>
+            <li data-req="prog req">Scoped and launched a customer-facing MVP for personalized discovery of cultural experiences; booking conversion rose from 10% on the previous flow to 65% in the three weeks after launch.</li>
+            <li data-req="req lead">Turned 8+ stakeholder discussions into 20+ workflow specs and self-serve guides, so non-technical teammates could read reports on their own.</li>
+          </ul>
+        </article>
+        <article class="card role">
+          <h3>Head Teaching Assistant</h3>
+          <p class="org">Machine Learning and Data Mining, Khoury College, Northeastern</p>
+          <p class="when">Jan 2025 to Aug 2025</p>
+          <ul>
+            <li data-req="prog">Coordinated and trained 5 TAs for a 100+ student course, owned lab scheduling, and co-designed rubrics and office hours that cut escalations to the professor by 30%.</li>
+            <li data-req="lead">Delivered 4 technical intro sessions to 50+ students on foundational AI and data concepts.</li>
+            <li data-req="lead bi">Analyzed 60+ submissions and interviewed 20+ students to uncover accuracy misuse on imbalanced data; the instructor adopted my precision/recall guidance.</li>
+          </ul>
+        </article>
+        <article class="card role">
+          <h3>Junior Data Analyst</h3>
+          <p class="org">Hupp Technologies, Ahmedabad, India</p>
+          <p class="when">Mar 2023 to Dec 2023</p>
+          <ul>
+            <li data-req="auto api">Built 3 Python financial data workflows with GitLab CI/CD checks that catch errors before stakeholder reporting.</li>
+            <li data-req="bi lead">Standardized KPI calculations with 20+ DAX measures across 5 Power BI dashboards for 12 cross-functional stakeholders.</li>
+            <li data-req="req prog">Traced 15+ recurring requests to dashboard gaps and fixed the root causes, cutting repeat requests by 60%.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= TOOLKIT ================= -->
+    <section class="page" id="toolkit" aria-labelledby="tkTitle">
+      <div class="page-head">
+        <div>
+          <h2 id="tkTitle">Toolkit</h2>
+          <p>Where I’ve actually used each tool, not just listed it.</p>
+        </div>
+      </div>
+      <div class="tk">
+        <div class="table-wrap">
+          <table class="usage">
+            <thead><tr><th scope="col">Tool</th><th scope="col">Hupp</th><th scope="col">EN-NOBLE</th><th scope="col">Head TA</th><th scope="col">Projects</th></tr></thead>
+            <tbody>
+              <tr data-req="bi lead"><td>Power BI and DAX</td><td><i class="dot" aria-label="Used"></i></td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot" aria-label="Used"></i></td></tr>
+              <tr data-req="api bi"><td>SQL</td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot" aria-label="Used"></i></td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot" aria-label="Used"></i></td></tr>
+              <tr data-req="auto"><td>Python</td><td><i class="dot" aria-label="Used"></i></td><td><i class="dot" aria-label="Used"></i></td><td><i class="dot" aria-label="Used"></i></td><td><i class="dot" aria-label="Used"></i></td></tr>
+              <tr data-req="bi lead"><td>Excel</td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot" aria-label="Used"></i></td><td><i class="dot none" aria-label="Not used"></i></td></tr>
+              <tr data-req="api"><td>REST APIs</td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot" aria-label="Used"></i></td></tr>
+              <tr data-req="auto"><td>GitLab CI/CD</td><td><i class="dot" aria-label="Used"></i></td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot none" aria-label="Not used"></i></td></tr>
+              <tr data-req="auto"><td>Flask and React</td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot" aria-label="Used"></i></td></tr>
+              <tr data-req="lead"><td>scikit-learn</td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot none" aria-label="Not used"></i></td><td><i class="dot" aria-label="Used"></i></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <p class="card-title">Education</p>
+          <ul class="edu">
+            <li><strong>Northeastern University</strong><span>MS in Data Science, Boston, MA</span><small>Sep 2024 to Dec 2026, GPA 3.5 / 4.0</small></li>
+            <li><strong>Gujarat Technological University</strong><span>BE in Information Technology, Ahmedabad, India</span><small>Jan 2020 to Jun 2024, GPA 3.7 / 4.0</small></li>
+          </ul>
+          <p class="also">Also familiar with Tableau, MySQL, Jira and the Claude API.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="page" id="contact" aria-labelledby="ctTitle">
+      <div class="card contact">
+        <div>
+          <h2 id="ctTitle">Let’s talk.</h2>
+          <p>If you want someone who checks the data first, automates the repetitive parts, and tells leadership what the numbers mean.</p>
+        </div>
+        <div class="contact-row">
+          <a class="btn btn-primary" href="mailto:bhaktipasnani02@gmail.com?subject=Workplace%20Systems%20Engineer%20role">Email</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/bhakti-pasnani-712280216" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-ghost" href="https://github.com/bhakti242002" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <p class="legal">© 2026 Bhakti Pasnani. Independent portfolio page, not affiliated with or endorsed by Tesla. <a href="https://bhakti242002.github.io/">General portfolio</a></p>
+    </section>
+  </main>
+</div>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+  /* ---------- slicer: cross-filters every visual tagged with data-req ---------- */
+  const NAMES = { all: 'all evidence', bi: 'BI and metrics', req: 'Requirements', lead: 'Leadership reports', auto: 'Automation', api: 'SQL and APIs', prog: 'Programs' };
+  const chips = $$('#chips button'), note = $('#slicerNote');
+  function applyFilter(f) {
+    chips.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.f === f)));
+    $$('[data-req]').forEach(el => {
+      const tags = el.dataset.req.split(' ');
+      el.classList.toggle('dim', f !== 'all' && !tags.includes(f));
+    });
+    note.textContent = f === 'all' ? 'Showing all evidence' : `Highlighting evidence for ${NAMES[f]}`;
+  }
+  chips.forEach(b => b.addEventListener('click', () => applyFilter(b.dataset.f)));
+
+  /* ---------- rail: highlight the page in view ---------- */
+  const railLinks = $$('#rail a');
+  const pages = railLinks.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        railLinks.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
+      });
+    }, { rootMargin: '-35% 0px -60% 0px', threshold: 0 });
+    pages.forEach(p => io.observe(p));
+  }
+
+  /* ---------- data quality demo ---------- */
+  const COLS = ['Ticket', 'Site', 'Category', 'Opened', 'Closed', 'Owner'];
+  const ROWS = [
+    ['WO-1041', 'Sparks, NV', 'HVAC', '2026-09-02', '2026-09-04', 'J. Ortiz'],
+    ['WO-1042', 'Sparks, NV', 'Lighting', '2026-09-02', '2026-09-03', 'M. Chen'],
+    ['WO-1043', 'Reno, NV', 'Badge access', '2026-09-03', '', 'A. Patel'],
+    ['WO-1042', 'Sparks, NV', 'Lighting', '2026-09-02', '2026-09-03', 'M. Chen'],
+    ['WO-1044', 'sparks nv', 'Cleaning', '2026-09-04', '2026-09-05', 'R. Lee'],
+    ['WO-1045', 'Reno, NV', 'HVAC', '09/05/2026', '2026-09-08', 'J. Ortiz'],
+    ['WO-1046', 'Sparks, NV', 'Furniture', '2026-09-06', '2026-09-09', ''],
+    ['WO-1047', 'Fremont, CA', 'Lighting', '2026-09-07', '2026-09-07', 'K. Brooks'],
+    ['WO-1048', 'Fremont, CA', 'HVAC', '2026-09-08', '2026-09-11', 'A. Patel'],
+    ['WO-1049', 'Austin, TX', 'Plumbing', '2026-09-08', '2026-09-10', 'M. Chen'],
+    ['WO-1047', 'Fremont, CA', 'Lighting', '2026-09-07', '2026-09-07', 'K. Brooks'],
+    ['WO-1050', 'Austin, TX', 'Badge access', '2026-09-09', '2026-09-12', 'R. Lee'],
+    ['WO-1051', 'Reno, NV', 'Cleaning', '2026-09-10', '2026-09-11', 'K. Brooks'],
+    ['WO-1052', 'Sparks, NV', 'Plumbing', '2026-09-11', '2026-09-15', 'J. Ortiz'],
+  ];
+  const ISO = /^\d{4}-\d{2}-\d{2}$/, SITE = /^[A-Z][a-z]+(?: [A-Z][a-z]+)*, [A-Z]{2}$/;
+  const LABEL = { missing: 'Missing value', duplicate: 'Duplicate', format: 'Bad format' };
+  const seen = new Set();
+  const ISSUES = ROWS.map(row => {
+    const out = [];
+    row.forEach((v, c) => { if (v === '') out.push({ type: 'missing', col: c }); });
+    const key = row.join('|');
+    if (seen.has(key)) out.push({ type: 'duplicate', col: 0 });
+    seen.add(key);
+    if (row[1] && !SITE.test(row[1])) out.push({ type: 'format', col: 1 });
+    [3, 4].forEach(c => { if (row[c] && !ISO.test(row[c])) out.push({ type: 'format', col: c }); });
+    return out;
+  });
+  const rules = { missing: false, duplicate: false, format: false };
+  const days = (a, b) => Math.round((Date.parse(b + 'T00:00:00Z') - Date.parse(a + 'T00:00:00Z')) / 86400000);
+  function dqStats() {
+    const held = ROWS.map((r, i) => ISSUES[i].some(x => rules[x.type]));
+    const shown = ROWS.filter((r, i) => !held[i]);
+    const closed = shown.filter(r => ISO.test(r[3]) && ISO.test(r[4]));
+    const avg = closed.length ? closed.reduce((s, r) => s + days(r[3], r[4]), 0) / closed.length : 0;
+    const sites = {};
+    shown.forEach(r => { const k = r[1] || '(blank)'; sites[k] = (sites[k] || 0) + 1; });
+    return { held, total: shown.length, open: shown.filter(r => r[4] === '').length, avg, heldCount: held.filter(Boolean).length, sites };
+  }
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  let lastStats = null;
+  function renderDQ() {
+    const st = dqStats();
+    $('#woBody').innerHTML = ROWS.map((r, i) => {
+      const active = ISSUES[i].filter(x => rules[x.type]);
+      const badCols = new Set(active.map(x => x.col));
+      const cells = r.map((v, c) => `<td${badCols.has(c) ? ' class="bad"' : ''}>${v === '' ? '<em>empty</em>' : esc(v)}</td>`).join('');
+      const types = [...new Set(active.map(x => x.type))];
+      const status = st.held[i] ? types.map(t => `<span class="chip red">${LABEL[t]}</span>`).join('') : '<span class="status-in">In report</span>';
+      return `<tr${st.held[i] ? ' class="held"' : ''}>${cells}<td>${status}</td></tr>`;
+    }).join('');
+    const put = (id, v, changed) => { const el = $('#' + id); el.querySelector('dd').textContent = v; el.classList.toggle('changed', !!changed); };
+    const any = Object.values(rules).some(Boolean);
+    put('m-total', st.total, any);
+    put('m-open', st.open, any);
+    put('m-days', st.avg.toFixed(2), any);
+    put('m-held', st.heldCount, any);
+    const max = Math.max(...Object.values(st.sites), 1);
+    $('#siteChart').innerHTML = Object.entries(st.sites).sort((a, b) => b[1] - a[1]).map(([k, v]) => {
+      const odd = !SITE.test(k);
+      return `<div class="hbar site"><span class="lbl${odd ? ' warn' : ''}">${esc(k)}</span><div class="track"><div class="fill" style="width:${(v / max * 100).toFixed(1)}%;background:${odd ? 'var(--red)' : 'var(--blue)'}"></div></div><span class="val">${v}</span></div>`;
+    }).join('');
+    const counts = { missing: 0, duplicate: 0, format: 0 };
+    ISSUES.forEach(list => [...new Set(list.map(x => x.type))].forEach(t => counts[t]++));
+    $('#issueChart').innerHTML = Object.keys(counts).map(t => {
+      const on = rules[t];
+      return `<div class="hbar site"><span class="lbl">${LABEL[t]}</span><div class="track"><div class="fill" style="width:${(counts[t] / 3 * 100).toFixed(1)}%;background:${on ? 'var(--teal)' : '#C3CAD5'}"></div></div><span class="val">${counts[t]}</span></div>`;
+    }).join('') + `<p class="foot-note">Teal means the rule is on and those records are being caught.</p>`;
+    lastStats = st;
+  }
+  $$('[data-rule]').forEach(cb => cb.addEventListener('change', () => { rules[cb.dataset.rule] = cb.checked; renderDQ(); }));
+  renderDQ();
+
+  /* ---------- projects: drill-through ---------- */
+  const PROJ = {
+    'p-bridge': { title: 'Insight Bridge', one: 'Upload any messy spreadsheet and get a working dashboard with no setup. AI helps with labels and questions, but every number on screen is computed by code.',
+      links: [['Try it live', 'https://insight-bridge-omega.vercel.app'], ['View code', 'https://github.com/bhakti242002/Insight_Bridge-']],
+      d: [['Problem', 'Turning a spreadsheet into a dashboard usually means templates, manual chart picking, and guessing from column names.'],
+          ['Approach', 'Statistical type inference decides what each column really is: a date, a total, an average, a category, an ID or free text. AI suggests clean labels and translates plain-English questions, while code computes every figure. It also flags missing values, outliers and near-duplicate records.'],
+          ['Result', 'Validated on 8+ unrelated real-world datasets, from sales to student grades, with a 240x speedup after fixing a bottleneck. If the AI service goes down, the dashboard still works.'],
+          ['Trade-offs', 'One file at a time, capped at 20,000 rows, and question answering handles single-step lookups rather than multi-step reasoning.']] },
+    'p-churn': { title: 'Customer churn prediction', one: 'End-to-end churn analytics on 7,000+ customers: SQL cleaning, Power BI dashboards, then a model that scores customers by how likely they are to leave.',
+      links: [['View code', 'https://github.com/bhakti242002/Customer-Churn-Prediction']],
+      d: [['Problem', 'Why do customers leave, how much revenue walks out with them, and who is likely to leave next?'],
+          ['Approach', 'A three-layer build: SQL exploration, a NULL audit across 30+ features and a clean production table, then Power BI churn and prediction dashboards, then a Random Forest with feature importance.'],
+          ['Result', 'Month-to-month contracts, fiber optic plans, high monthly charges and tenure under six months were the highest-risk segments. Competitors and price were the top reasons for leaving.'],
+          ['So what', 'The prediction page breaks at-risk customers down by contract, tenure and payment method, so a retention team knows exactly where to start.']] },
+    'p-risk': { title: 'Live Revenue Risk Check', one: 'Type any public company’s ticker and get a live probability that its revenue declines next year, scored in real time from the company’s actual SEC filings.',
+      links: [['Try it live', 'https://live-revenue-risk-tool-api-orcin.vercel.app/'], ['View code', 'https://github.com/bhakti242002/Live-Revenue-Risk-Tool']],
+      d: [['Problem', 'Predicting a company’s revenue a year out is hard, and most portfolio models are judged on shuffled data that quietly leaks the future.'],
+          ['Approach', 'Every request resolves the ticker to its SEC filer ID, pulls revenue, assets, liabilities and net income from data.sec.gov, and rebuilds four features. The model trains on 2009 to 2020 and is tested only on 2021 onward.'],
+          ['Result', '0.62 ROC-AUC and 50% recall on 505 real company-years across 48 companies. A naive model looks 78% accurate while catching none of the declines.'],
+          ['Trade-offs', '48 large, well-known companies is a small, non-random sample. Missing XBRL tags are handled with missingness indicators rather than hidden.']] },
+    'p-sql': { title: 'AI SQL Auditor', one: 'Does AI’s SQL advice hold up? I tested 120 of Claude’s query rewrites against real Postgres execution plans instead of taking them on faith.',
+      links: [['View code', 'https://github.com/bhakti242002/AI-SQL-Auditor']],
+      d: [['Problem', 'AI assistants suggest SQL optimizations constantly. Almost nobody checks whether they’re right.'],
+          ['Approach', 'A TPC-H-style 8-table schema with about 80K synthetic rows, and a generator that produces 8 queries for each of 15 anti-patterns. Claude reviews each one, then both versions run under EXPLAIN ANALYZE.'],
+          ['Result', 'AI flagged an issue in 100% of queries. 38% of fixes helped, 34% changed nothing, 20% were slower and 8% failed to run.'],
+          ['Trade-offs', 'Synthetic data keeps plans reproducible. A separate real-world dbt sample is reviewed qualitatively and kept out of the core numbers.']] },
+    'p-gemini': { title: 'Gemini in Sheets: the missing confidence layer', one: 'Gemini in Sheets tells users to verify its output but never says when. I specified a confidence badge that fixes that without adding a model call.',
+      links: [['Read the case study', 'https://functional-trouble-cf6.notion.site/Gemini-in-Sheets-A-Confidence-Layer-It-s-Missing-3e4ced2212a780ffbdb1cd03db0459a4']],
+      d: [['Problem', 'A live Google AI feature asks users to double-check it, but gives no in-product signal for which answers need checking.'],
+          ['Approach', 'A deterministic confidence badge built from signals already in the sheet, so there’s no added model call, cost or latency. Written up as a PRD with wireframes and a phased rollout.'],
+          ['Measuring it', 'A North Star paired with a counter-metric, so the feature can’t be improved by making the badge more alarming and less accurate.']] },
+    'p-funnel': { title: 'Google Storage funnel', one: 'The free 5GB-to-paid funnel is quietly optimizing for two business goals that pull against each other. I mapped the conflict and designed a cohort-based experiment.',
+      links: [['Open the deck', 'google-storage-funnel.pdf']], d: [] },
+    'p-strava': { title: 'Strava leaderboards', one: 'Why a leaderboard built to motivate ends up demotivating almost everyone on it, and a peer-tier redesign with a plan to test it.',
+      links: [['Open the deck', 'strava-leaderboard.pdf']], d: [] },
+  };
+  const detail = $('#detail');
+  function showProject(id, scroll) {
+    const p = PROJ[id]; if (!p) return;
+    $$('#projBody tr').forEach(tr => {
+      const on = tr.dataset.id === id;
+      tr.classList.toggle('sel', on);
+      tr.querySelector('.proj-btn').setAttribute('aria-expanded', String(on));
+    });
+    const links = p.links.map(([t, u], i) => `<a class="btn ${i === 0 ? 'btn-primary' : 'btn-ghost'}" href="${u}" target="_blank" rel="noopener">${t}</a>`).join('');
+    const dl = p.d.length ? `<dl>${p.d.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>` : '';
+    detail.innerHTML = `<div class="detail-head"><div><h3>${p.title}</h3><p>${p.one}</p></div><div class="detail-links">${links}</div></div>${dl}`;
+    if (scroll) detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  $$('#projBody tr').forEach(tr => tr.querySelector('.proj-btn').addEventListener('click', () => showProject(tr.dataset.id, true)));
+  $$('[data-open]').forEach(a => a.addEventListener('click', () => showProject(a.dataset.open, false)));
+  showProject('p-bridge', false);
+
+})();
+</script>
+</body>
+</html>
